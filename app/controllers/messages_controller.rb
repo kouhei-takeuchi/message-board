@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :ipdate, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :destroy]
   
   def index
-    @messages = Message.all
+    @messages = Message.all.page(params[:page]).per(3)
   end
 
   def show
